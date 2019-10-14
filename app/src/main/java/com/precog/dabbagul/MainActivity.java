@@ -2,7 +2,6 @@ package com.precog.dabbagul;
 
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -16,14 +15,14 @@ public class MainActivity extends BaseActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                case R.id.navigation_explore:
+                    mTextMessage.setText(R.string.nav_title_explore);
                     return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                case R.id.navigation_chats:
+                    mTextMessage.setText(R.string.nav_title_chats);
                     return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                case R.id.navigation_requests:
+                    mTextMessage.setText(R.string.nav_title_requests);
                     return true;
             }
             return false;

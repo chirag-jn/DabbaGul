@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Dabba Gul</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_main">Dabba Gul</string>
+    <string name="nav_title_explore">Explore</string>
+    <string name="nav_title_chats">Chats</string>
+    <string name="nav_title_requests">Requests</string>
+    <string name="nav_title_profile">Profile</string>
+
 </resources>
