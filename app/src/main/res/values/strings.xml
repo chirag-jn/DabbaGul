@@ -5,5 +5,7 @@
     <string name="nav_title_chats">Chats</string>
     <string name="nav_title_requests">Requests</string>
     <string name="nav_title_profile">Profile</string>
+    
+    <string name="sample_profile_name">Dabba Gul</string>
 
 </resources>
