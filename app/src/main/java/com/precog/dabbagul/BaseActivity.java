@@ -7,7 +7,7 @@ import android.widget.Button;
 
 public class BaseActivity extends AppCompatActivity {
 
-    private static String TAG = "BaseActivity";
+    private static String TAG = "BaseActivityTag";
 
     public static void removeActionBar(AppCompatActivity activity) {
         activity.getSupportActionBar().hide();
@@ -18,11 +18,11 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-    public static void loge(String msg) {
+    public static void loge(String TAG, String msg) {
         Log.e(TAG, msg);
     }
 
-    public static void logv(String msg) {
+    public static void logv(String TAG, String msg) {
         Log.v(TAG, msg);
     }
 
@@ -32,7 +32,7 @@ public class BaseActivity extends AppCompatActivity {
             button = (Button) o;
             button.setOnClickListener(listener);
         } catch (Exception e) {
-            loge("addClickListenerToButton: Object passed is not Button");
+            loge(TAG, "addClickListenerToButton: Object passed is not Button");
         }
     }
 

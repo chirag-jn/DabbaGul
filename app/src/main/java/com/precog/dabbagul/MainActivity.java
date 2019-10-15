@@ -3,32 +3,49 @@ package com.precog.dabbagul;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 public class MainActivity extends BaseActivity {
-    private TextView mTextMessage;
+
+    private static String TAG = "MainActivityTag";
+
+    // Main Activity Objects
+    private FrameLayout mainActivityFrame;
+    private BottomNavigationView navView;
+
+    // Fragments for Switching the Fragments in the Main Activity
+    Fragment exploreFragment  = new ExploreFragment();
+    Fragment profileFragment  = new ProfileFragment();
+    Fragment requestsFragment = new RequestsFragment();
+    Fragment chatsFragment    = new ChatsFragment();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            Fragment selectedFragment = null;
+
             switch (item.getItemId()) {
                 case R.id.navigation_explore:
-                    mTextMessage.setText(R.string.nav_title_explore);
-                    return true;
+                    selectedFragment = exploreFragment;
+                    break;
                 case R.id.navigation_chats:
-                    mTextMessage.setText(R.string.nav_title_chats);
-                    return true;
+                    selectedFragment = chatsFragment;
+                    break;
                 case R.id.navigation_requests:
-                    mTextMessage.setText(R.string.nav_title_requests);
-                    return true;
+                    selectedFragment = requestsFragment;
+                    break;
                 case R.id.navigation_profile:
-                    mTextMessage.setText(R.string.nav_title_profile);
-                    return true;
+                    selectedFragment = profileFragment;
+                    break;
             }
-            return false;
+            getSupportFragmentManager().beginTransaction().replace(mainActivityFrame.getId(), selectedFragment).commit();
+            return true;
         }
     };
 
@@ -36,13 +53,26 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        mTextMessage = findViewById(R.id.message);
+
+        // Get ID
+        navView = findViewById(R.id.nav_view);
+        mainActivityFrame = findViewById(R.id.main_activity_frame);
+
+        // Start Listener for Bottom Navigation View
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        // Remove Action Bar from Top
         removeActionBar(this);
 
+        // Setting Height of Fragment
+        int ht = navView.getHeight();
+        ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) mainActivityFrame.getLayoutParams();
+        params.setMargins(0, 0, 0, ht);
+        mainActivityFrame.setLayoutParams(params);
 
+        //  Setting the Default Fragment
+        getSupportFragmentManager().beginTransaction().replace(mainActivityFrame.getId(), exploreFragment).commit();
+        navView.setSelectedItemId(R.id.navigation_explore);
     }
 
 }
