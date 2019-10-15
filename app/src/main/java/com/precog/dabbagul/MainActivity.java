@@ -24,6 +24,9 @@ public class MainActivity extends BaseActivity {
                 case R.id.navigation_requests:
                     mTextMessage.setText(R.string.nav_title_requests);
                     return true;
+                case R.id.navigation_profile:
+                    mTextMessage.setText(R.string.nav_title_profile);
+                    return true;
             }
             return false;
         }
