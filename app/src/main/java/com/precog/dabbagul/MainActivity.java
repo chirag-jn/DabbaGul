@@ -39,6 +39,10 @@ public class MainActivity extends BaseActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        removeActionBar(this);
+
+
     }
 
 }
