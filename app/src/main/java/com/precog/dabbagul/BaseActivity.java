@@ -5,7 +5,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class BaseActivity extends AppCompatActivity {
+
+    // Firebase Auth
+    public static FirebaseAuth mAuth;
+    public static FirebaseUser currentUser;
+    public static GoogleSignInClient mGoogleSignInClient;
+    public static String userUID = null;
+
+    // Location
+    public static LocationGetter myLocation = null;
 
     private static String TAG = "BaseActivityTag";
 

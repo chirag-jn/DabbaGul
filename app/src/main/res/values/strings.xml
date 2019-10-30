@@ -5,7 +5,11 @@
     <string name="nav_title_chats">Chats</string>
     <string name="nav_title_requests">Requests</string>
     <string name="nav_title_profile">Profile</string>
-    
+
     <string name="sample_profile_name">Dabba Gul</string>
+
+    <string name="disconnect">Disconnect</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="signed_out">Signed Out</string>
 
 </resources>
