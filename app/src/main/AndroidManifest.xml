@@ -13,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".GroupChatActivity"></activity>
+        <activity android:name=".SingleChatActivity" />
+        <activity android:name=".SettingsActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,8 +26,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/SplashTheme">
-        </activity>
+            android:theme="@style/SplashTheme" />
     </application>
 
 </manifest>

@@ -46,6 +46,8 @@ public class LoginActivity extends BaseActivity {
                     signIn();
                 }
             });
+        } else {
+            switchAct();
         }
     }
 
