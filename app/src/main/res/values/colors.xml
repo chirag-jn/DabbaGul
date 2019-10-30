@@ -10,4 +10,6 @@
     <color name="backColor">#F35965</color>
 
     <color name="profileNameFontColor">#000000</color>
+
+    <color name="popupTextColor">#000000</color>
 </resources>
