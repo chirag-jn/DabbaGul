@@ -29,9 +29,17 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        initialLoads();
+        mAuth = FirebaseAuth.getInstance();
+
+
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         updateUI(currentUser);
-        mAuth = FirebaseAuth.getInstance();
+
+        // TODO: Remove This
+        switchAct();
+
         if(isNotLoggedIn) {
             setContentView(R.layout.activity_login);
             GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -51,13 +59,16 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
+    private void initialLoads() {
+        myLocation = new LocationGetter();
+        myLocation.initialize(this);
+    }
+
     private void updateUI(FirebaseUser user) {
         if (user != null) {
             isNotLoggedIn = false;
             userUID = user.getUid();
             currentUser = mAuth.getCurrentUser();
-            myLocation = new LocationGetter();
-            myLocation.initialize(this);
         } else {
             isNotLoggedIn = true;
         }
