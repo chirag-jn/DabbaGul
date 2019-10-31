@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "42906109759",
+    "firebase_url": "https://dabbagul-iiitd.firebaseio.com",
+    "project_id": "dabbagul-iiitd",
+    "storage_bucket": "dabbagul-iiitd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42906109759:android:fba27f3e6f299b91a5f58a",
+        "android_client_info": {
+          "package_name": "com.precog.dabbagul"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "42906109759-kg9cjn2rihgja411fhq60mu0c40pttu9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhqr6KhmEoIJO4nhi1UYw-8FZzZpRhXAc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "42906109759-kg9cjn2rihgja411fhq60mu0c40pttu9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
