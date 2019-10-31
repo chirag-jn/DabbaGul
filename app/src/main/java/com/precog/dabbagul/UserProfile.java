@@ -1,8 +1,9 @@
 package com.precog.dabbagul;
 
 public class UserProfile {
-    int userUID;
-    String name;
-    int age;
-
+    public String dp;
+    public String email;
+    public String id;
+    public String name;
+    public String provider;
 }

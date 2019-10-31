@@ -1,6 +1,7 @@
 package com.precog.dabbagul;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.view.View;
@@ -15,12 +16,20 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+
+import java.net.URI;
+
+import javax.annotation.Nullable;
 
 public class LoginActivity extends BaseActivity {
     private static final int RC_SIGN_IN = 7;
-    private SignInButton button;
+    SignInButton button;
 
     private Class switchClass = MainActivity.class;
     private boolean isNotLoggedIn;
@@ -29,24 +38,29 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        initialLoads();
+        myLocation = new LocationGetter();
+        myLocation.initialize(this);
         mAuth = FirebaseAuth.getInstance();
 
+        //TODO: Remove this
+        mAuth.signOut();
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
-        updateUI(currentUser);
+        currentUser = mAuth.getCurrentUser();
+        updateUI();
 
         // TODO: Remove This
         switchAct();
 
         if(isNotLoggedIn) {
             setContentView(R.layout.activity_login);
-            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    .requestIdToken(getString(R.string.default_web_client_id))
-                    .requestEmail()
-                    .build();
-            mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
             button = findViewById(R.id.google_sign_in);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -59,23 +73,30 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
-    private void initialLoads() {
-        myLocation = new LocationGetter();
-        myLocation.initialize(this);
+    private void updateUI() {
+        currentUser = mAuth.getCurrentUser();
+        isNotLoggedIn = currentUser == null;
     }
 
-    private void updateUI(FirebaseUser user) {
-        if (user != null) {
-            isNotLoggedIn = false;
-            userUID = user.getUid();
-            currentUser = mAuth.getCurrentUser();
-        } else {
-            isNotLoggedIn = true;
-        }
+    private void initializeUserProfile() {
+        DocumentReference myProfileDB = profilesDB.document(userUID);
+        myProfileDB.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if(e!=null) {
+                    loge(TAG, "Error in initializeUserProfile");
+                }
+                myProfileObj = documentSnapshot.toObject(UserProfile.class);
+            }
+        });
     }
 
     private void switchAct() {
         finish();
+        currentUser = mAuth.getCurrentUser();
+        if(currentUser!=null)
+            userUID = currentUser.getUid();
+        initializeUserProfile();
         logv(TAG, "switching");
         Intent intent = new Intent(this, switchClass);
         startActivity(intent);
@@ -96,7 +117,8 @@ public class LoginActivity extends BaseActivity {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
+                if(account!=null)
+                    firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 loge(TAG, "sign in failed");
@@ -114,14 +136,13 @@ public class LoginActivity extends BaseActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             logv(TAG, "signInWithCredential:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+                            updateUI();
                             switchAct();
                         } else {
                             // If sign in fails, display a message to the user.
                             loge(TAG, "signInWithCredential:failure " + task.getException());
 //                            Snackbar.make(findViewById(R.id.main_layout), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
-                            updateUI(null);
+                            updateUI();
                         }
                     }
                 });

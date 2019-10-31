@@ -8,6 +8,8 @@ import android.widget.Button;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -16,6 +18,11 @@ public class BaseActivity extends AppCompatActivity {
     public static FirebaseUser currentUser;
     public static GoogleSignInClient mGoogleSignInClient;
     public static String userUID = null;
+    public static UserProfile myProfileObj = null;
+
+    // Firebase Database
+    private static final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public static final CollectionReference profilesDB = db.collection("profiles");
 
     // Location
     public static LocationGetter myLocation = null;
