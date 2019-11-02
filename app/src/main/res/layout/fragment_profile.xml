@@ -2,6 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,12 +12,12 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="8dp"
-            android:src="@drawable/sample_profile"
+            android:src="@drawable/hasan_minhaj"
             app:civ_border_color="@color/backColor"
             app:civ_border_width="@dimen/profile_image_border"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,14 +28,121 @@
             android:id="@+id/profile_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:textColor="@color/profileNameFontColor"
-            android:text="@string/sample_profile_name"
+            android:layout_marginTop="15dp"
+            android:text="Naman Gupta"
+            android:textAlignment="center"
+            android:textColor="#773131"
             android:textSize="@dimen/profile_name_size"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/profile_image"
             app:layout_constraintStart_toStartOf="@+id/profile_image"
             app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+        <LinearLayout
+            android:id="@+id/history_button"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/food_list_item_frame"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_name">
+
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_restaurant_menu_24px"
+            android:tint="#c62828"/>
+
+        <TextView
+            style="@android:style/TextAppearance.Material.Widget.Toolbar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:text="Lunch History"
+            android:textColor="#773131"
+            android:textSize="25sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/edit_button"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/food_list_item_frame"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/history_button">
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_edit_24px"
+                android:tint="#c62828"/>
+
+            <TextView
+                style="@android:style/TextAppearance.Material.Widget.Toolbar.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:text="Edit Info"
+                android:textColor="#773131"
+                android:textSize="25sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/settings_button"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/food_list_item_frame"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_button">
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_edit_24px"
+                android:tint="#c62828"/>
+
+            <TextView
+                style="@android:style/TextAppearance.Material.Widget.Toolbar.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:text="Settings"
+                android:textColor="#773131"
+                android:textSize="25sp" />
+
+
+        </LinearLayout>
 
     </android.support.constraint.ConstraintLayout>
 
