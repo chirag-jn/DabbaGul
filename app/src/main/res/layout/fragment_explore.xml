@@ -44,16 +44,24 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:clickable="true"
+                android:orientation="horizontal"
                 android:layout_gravity="center"
+                android:paddingHorizontal="60dp"
                 >
 
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignLeft="@+id/text_createparty"
+                    android:layout_marginVertical="33dp"
+                    android:src="@drawable/ic_add_24px" />
+
                 <TextView
-                    android:layout_marginTop="18dp"
-                    android:layout_marginBottom="18dp"
+                    android:layout_marginVertical="20dp"
                     android:layout_gravity="center"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Add Your Lunch"
+                    android:text="Add your lunch"
                     android:padding="10dp"
                     android:textSize="30dp"
                     style="@style/TextAppearance.AppCompat.Body2"
