@@ -23,10 +23,10 @@ public class ExploreFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        box1 = view.findViewById(R.id.textView1);
-//        box2 = view.findViewById(R.id.textView2);
+        box1 = view.findViewById(R.id.textView1);
+        box2 = view.findViewById(R.id.textView2);
         double[] vals = BaseActivity.myLocation.getCoordinates();
-//        box1.setText(vals[0]+"");
-//        box2.setText(vals[1]+"");
+        box1.setText(vals[0]+"");
+        box2.setText(vals[1]+"");
     }
 }
