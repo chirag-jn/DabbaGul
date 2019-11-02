@@ -5,5 +5,4 @@ public class UserProfile {
     public String email;
     public String id;
     public String name;
-    public String provider;
 }

@@ -96,7 +96,8 @@ public class LoginActivity extends BaseActivity {
         currentUser = mAuth.getCurrentUser();
         if(currentUser!=null)
             userUID = currentUser.getUid();
-        initializeUserProfile();
+        // TODO: Uncomment this
+//        initializeUserProfile();
         logv(TAG, "switching");
         Intent intent = new Intent(this, switchClass);
         startActivity(intent);
