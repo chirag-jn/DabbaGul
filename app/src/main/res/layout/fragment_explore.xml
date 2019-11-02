@@ -19,7 +19,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="10dp"
+                android:padding="5dp"
                 >
                 <ImageView
                     android:layout_width="40dp"
@@ -72,7 +72,7 @@
         <android.support.v7.widget.SearchView
             android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             app:queryHint="Search"
             app:iconifiedByDefault="false"
             app:queryBackground="@android:color/transparent"
