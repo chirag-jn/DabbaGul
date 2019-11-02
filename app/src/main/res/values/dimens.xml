@@ -5,6 +5,7 @@
 
     <dimen name="profile_image_border">0dp</dimen>
     <dimen name="profile_name_size">20sp</dimen>
+    <dimen name="profile_elems_text_size">25sp</dimen>
 
     <dimen name="popup_text_size">22sp</dimen>
     <dimen name="popup_button_text_size">18sp</dimen>

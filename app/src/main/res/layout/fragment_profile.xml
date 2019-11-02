@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,7 +16,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="8dp"
-            android:src="@drawable/hasan_minhaj"
+            android:src="@drawable/sample_profile"
             app:civ_border_color="@color/backColor"
             app:civ_border_width="@dimen/profile_image_border"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,117 +28,123 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Naman Gupta"
+            android:text="@string/sample_profile_name"
             android:textAlignment="center"
-            android:textColor="#773131"
+            android:textColor="@color/profile_elements_text_color"
             android:textSize="@dimen/profile_name_size"
             app:layout_constraintEnd_toEndOf="@+id/profile_image"
             app:layout_constraintStart_toStartOf="@+id/profile_image"
             app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
         <LinearLayout
-            android:id="@+id/history_button"
-            android:clickable="true"
+            android:id="@+id/profile_history_button"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/food_list_item_frame"
+            android:clickable="true"
+            android:focusable="true"
             android:orientation="horizontal"
             android:padding="20dp"
-            android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_name">
 
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:scaleType="centerCrop"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_restaurant_menu_24px"
-            android:tint="#c62828"/>
-
-        <TextView
-            style="@android:style/TextAppearance.Material.Widget.Toolbar.Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:text="Lunch History"
-            android:textColor="#773131"
-            android:textSize="25sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/edit_button"
-            android:clickable="true"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/food_list_item_frame"
-            android:orientation="horizontal"
-            android:padding="20dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/history_button">
-
-
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:scaleType="centerCrop"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_edit_24px"
-                android:tint="#c62828"/>
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_restaurant_menu_24px"
+                android:contentDescription="@string/lunch_history"
+                android:tint="@color/profile_elements_image_tint" />
 
             <TextView
                 style="@android:style/TextAppearance.Material.Widget.Toolbar.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="Edit Info"
-                android:textColor="#773131"
-                android:textSize="25sp" />
-
+                android:layout_marginStart="20dp"
+                android:text="@string/lunch_history"
+                android:textColor="@color/profile_elements_text_color"
+                android:textSize="@dimen/profile_elems_text_size" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/settings_button"
-            android:clickable="true"
+            android:id="@+id/profile_edit_button"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/food_list_item_frame"
+            android:clickable="true"
+            android:focusable="true"
             android:orientation="horizontal"
             android:padding="20dp"
-            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_button">
+            app:layout_constraintTop_toBottomOf="@+id/profile_history_button">
 
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:scaleType="centerCrop"
                 android:layout_gravity="center_vertical"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/edit_info"
                 android:src="@drawable/ic_edit_24px"
-                android:tint="#c62828"/>
+                android:tint="@color/profile_elements_image_tint" />
 
             <TextView
                 style="@android:style/TextAppearance.Material.Widget.Toolbar.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="Settings"
-                android:textColor="#773131"
-                android:textSize="25sp" />
+                android:layout_marginStart="20dp"
+                android:text="@string/edit_info"
+                android:textColor="@color/profile_elements_text_color"
+                android:textSize="@dimen/profile_elems_text_size" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/profile_settings_button"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/food_list_item_frame"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_edit_button">
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_edit_24px"
+                android:contentDescription="@string/settings"
+                android:tint="@color/profile_elements_image_tint" />
+
+            <TextView
+                style="@android:style/TextAppearance.Material.Widget.Toolbar.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"
+                android:text="@string/settings"
+                android:textColor="@color/profile_elements_text_color"
+                android:textSize="@dimen/profile_elems_text_size" />
 
 
         </LinearLayout>
