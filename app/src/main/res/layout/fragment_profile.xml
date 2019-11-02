@@ -10,6 +10,7 @@
         android:layout_height="match_parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:fresco="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_image"
             android:layout_width="130dp"
             android:layout_height="130dp"

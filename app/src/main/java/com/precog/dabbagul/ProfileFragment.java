@@ -1,6 +1,7 @@
 package com.precog.dabbagul;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.squareup.picasso.Picasso;
 
 public class ProfileFragment extends BaseFragment implements View.OnClickListener {
 
@@ -41,6 +46,17 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
         lunchHistory.setOnClickListener(this);
         editInfo.setOnClickListener(this);
         settings.setOnClickListener(this);
+
+        profileName.setText(myProfileObj.name);
+
+//        Fresco.initialize(getActivity());
+
+        Picasso.get().load(myProfileObj.dp).into(profileImage);
+
+//        Uri dpUri = Uri.parse(myProfileObj.dp);
+//        SimpleDraweeView myImage = (SimpleDraweeView) profileImage;
+//        myImage.setImageURI(dpUri);
+
     }
 
     @Override

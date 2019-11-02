@@ -23,8 +23,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
-import java.net.URI;
-
 import javax.annotation.Nullable;
 
 public class LoginActivity extends BaseActivity {
@@ -56,9 +54,6 @@ public class LoginActivity extends BaseActivity {
         currentUser = mAuth.getCurrentUser();
         updateUI();
 
-        // TODO: Remove This
-        switchAct();
-
         if(isNotLoggedIn) {
             setContentView(R.layout.activity_login);
             button = findViewById(R.id.google_sign_in);
@@ -79,16 +74,23 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void initializeUserProfile() {
-        DocumentReference myProfileDB = profilesDB.document(userUID);
-        myProfileDB.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                if(e!=null) {
-                    loge(TAG, "Error in initializeUserProfile");
-                }
-                myProfileObj = documentSnapshot.toObject(UserProfile.class);
-            }
-        });
+
+        // TODO: Connect login to Firebase instead
+        myProfileObj.name = currentUser.getDisplayName();
+        myProfileObj.email = currentUser.getEmail();
+        myProfileObj.dp = currentUser.getPhotoUrl().toString();
+        myProfileObj.id = currentUser.getUid();
+
+//        DocumentReference myProfileDB = profilesDB.document(userUID);
+//        myProfileDB.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+//                if(e!=null) {
+//                    loge(TAG, "Error in initializeUserProfile");
+//                }
+//                myProfileObj = documentSnapshot.toObject(UserProfile.class);
+//            }
+//        });
     }
 
     private void switchAct() {
@@ -96,8 +98,7 @@ public class LoginActivity extends BaseActivity {
         currentUser = mAuth.getCurrentUser();
         if(currentUser!=null)
             userUID = currentUser.getUid();
-        // TODO: Uncomment this
-//        initializeUserProfile();
+        initializeUserProfile();
         logv(TAG, "switching");
         Intent intent = new Intent(this, switchClass);
         startActivity(intent);
