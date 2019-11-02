@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DabbaGul.iml" filepath="$PROJECT_DIR$/DabbaGul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DabbaGul-updates.iml" filepath="$PROJECT_DIR$/DabbaGul-updates.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
