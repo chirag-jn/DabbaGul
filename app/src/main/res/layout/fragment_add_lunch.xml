@@ -2,6 +2,149 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#123456">
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:orientation="vertical" >
+
+        <ImageButton
+            android:id="@+id/confirm"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="30dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:layout_alignParentLeft="true"
+            android:background="@color/white"
+            android:src="@drawable/ic_check_24px"
+            android:tint="@color/backColor" />
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="30dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/white"
+            android:src="@drawable/ic_check_24px"
+            android:tint="@color/backColor" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/lunch_view"
+        android:layout_width="match_parent"
+        android:layout_height= "300dp"
+        android:layout_marginTop="50dp">
+
+        <ImageView
+            android:id="@+id/lunch_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#D3D3D3"
+            />
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:tint="@color/white"
+            android:src="@drawable/ic_add_24px"
+            android:background="@drawable/add_lunch"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Dish Name"
+            android:textColor="#565656" />
+
+        <EditText
+            android:id="@+id/lunch_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/colorPrimaryDark" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:text="Description"
+            android:textColor="#565656" />
+
+        <EditText
+            android:id="@+id/lunch_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/colorPrimaryDark" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="Tags"
+            android:layout_marginLeft="20dp"
+            android:textColor="#565656" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="520dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/tag1"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/tags_border"
+            android:layout_height="30dp"
+            android:text="#veg"
+            android:textColor="#1f1f1f"
+            android:textSize="15dp"
+            android:textAllCaps="false"
+            />
+
+        <Button
+            android:id="@+id/tag2"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/tags_border"
+            android:layout_height="30dp"
+            android:text="#spicy"
+            android:textColor="#1f1f1f"
+            android:textSize="15dp"
+            android:textAllCaps="false"
+            android:layout_marginLeft="10dp"
+            />
+
+    </LinearLayout>
+
 
 </FrameLayout>
