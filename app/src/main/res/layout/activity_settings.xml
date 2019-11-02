@@ -6,4 +6,116 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/confirm"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
+            android:background="@color/white"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_check_24px"
+            android:tint="#c62828" />
+
+    </RelativeLayout>
+
+    <TextView
+        style="@android:style/TextAppearance.Material.Widget.Toolbar.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="55dp"
+        android:text="Settings"
+        android:textColor="#773131"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="110dp"
+        android:background="@color/white"
+        android:backgroundTint="#FFFFFF"
+        android:gravity="start"
+        android:text="Account"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textColor="#8c1818"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/notifications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/white"
+        android:backgroundTint="#FFFFFF"
+        android:gravity="start"
+        android:text="Notifications"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textColor="#8c1818"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/account" />
+
+    <Button
+        android:id="@+id/privacy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/white"
+        android:backgroundTint="#FFFFFF"
+        android:gravity="start"
+        android:text="Privacy"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textColor="#8c1818"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/notifications" />
+
+    <Button
+        android:id="@+id/about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/white"
+        android:backgroundTint="#FFFFFF"
+        android:gravity="start"
+        android:text="About"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textColor="#8c1818"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/privacy" />
+
 </android.support.constraint.ConstraintLayout>
