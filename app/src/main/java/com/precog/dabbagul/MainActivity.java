@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 
 public class MainActivity extends BaseActivity {
 
-    private static String TAG = "MainActivityTag";
+    private static String TAG = "MainActivity";
 
     // Main Activity Objects
     private FrameLayout mainActivityFrame;

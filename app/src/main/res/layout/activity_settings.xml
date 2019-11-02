@@ -66,7 +66,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="50dp"
         android:background="@color/white"
         android:backgroundTint="#FFFFFF"
         android:gravity="start"
@@ -78,14 +77,13 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/account" />
+        app:layout_constraintTop_toBottomOf="@+id/account" />
 
     <Button
         android:id="@+id/privacy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="50dp"
         android:background="@color/white"
         android:backgroundTint="#FFFFFF"
         android:gravity="start"
@@ -97,14 +95,13 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/notifications" />
+        app:layout_constraintTop_toBottomOf="@+id/notifications" />
 
     <Button
         android:id="@+id/about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="50dp"
         android:background="@color/white"
         android:backgroundTint="#FFFFFF"
         android:gravity="start"
@@ -116,6 +113,6 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/privacy" />
+        app:layout_constraintTop_toBottomOf="@+id/privacy" />
 
 </android.support.constraint.ConstraintLayout>
