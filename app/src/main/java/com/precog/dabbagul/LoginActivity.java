@@ -57,7 +57,7 @@ public class LoginActivity extends BaseActivity {
         updateUI();
 
         // TODO: Remove This
-        switchAct();
+//        switchAct();
 
         if(isNotLoggedIn) {
             setContentView(R.layout.activity_login);
