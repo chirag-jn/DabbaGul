@@ -46,14 +46,4 @@ public class BaseActivity extends AppCompatActivity {
         Log.v(TAG, msg);
     }
 
-    public static void addClickListenerToButton(View.OnClickListener listener, Object o) {
-        Button button;
-        try {
-            button = (Button) o;
-            button.setOnClickListener(listener);
-        } catch (Exception e) {
-            loge(TAG, "addClickListenerToButton: Object passed is not Button");
-        }
-    }
-
 }
