@@ -1,19 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#654321">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                >
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_location"
+                    android:tint="@color/backColor"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Work : Okhla, Phase-3"
+                    android:textSize="22dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/food_list_item_frame"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:layout_gravity="center"
+                >
+
+                <TextView
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Add Your Lunch"
+                    android:padding="10dp"
+                    android:textSize="30dp"
+                    style="@style/TextAppearance.AppCompat.Body2"
+                    android:textAlignment="center"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#c0c0c0"/>
+
+        <android.support.v7.widget.SearchView
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:queryHint="Search"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@android:color/transparent"
+            android:background="@drawable/search_frame"
+        />
+
+        <ListView
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_explore_item"
+            android:dividerHeight="10dp"
+            />
 
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+
+
+    </LinearLayout>
+
+
+
+
+
 </FrameLayout>
