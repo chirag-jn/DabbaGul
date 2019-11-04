@@ -12,6 +12,6 @@ public class AddLunchFeedbackFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_add_lunch, container, false);
+        return inflater.inflate(R.layout.activity_add_lunch, container, false);
     }
 }

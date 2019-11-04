@@ -16,6 +16,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".GroupChatActivity" />
         <activity android:name=".SingleChatActivity" />
+        <activity android:name=".AddLunchActivity" />
         <activity
             android:name=".SettingsActivity" />
         <activity android:name=".LoginActivity"
