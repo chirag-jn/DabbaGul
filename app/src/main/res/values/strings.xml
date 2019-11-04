@@ -6,6 +6,11 @@
     <string name="nav_title_requests">Requests</string>
     <string name="nav_title_profile">Profile</string>
 
+    <!--Explore-->
+    <string name="sample_loc">Home</string>
+    <string name="add_your_lunch">Add Your Lunch</string>
+    <string name="edit_your_lunch">Edit Your Lunch</string>
+
     <string name="sample_profile_name">Dabba Gul</string>
     <string name="lunch_history">Lunch History</string>
     <string name="edit_info">Edit Info</string>
@@ -17,5 +22,8 @@
 
     <string name="popup_placeholder">Enter Some Text</string>
     <string name="popup_button_placeholder">Okay</string>
+
+    <!--Camera-->
+    <string name="take_picture">Take Picture</string>
 
 </resources>

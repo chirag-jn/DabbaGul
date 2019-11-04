@@ -14,4 +14,6 @@
     <color name="profile_elements_image_tint">#c62828</color>
 
     <color name="popupTextColor">#000000</color>
+
+    <color name="explore_background">#c0c0c0</color>
 </resources>

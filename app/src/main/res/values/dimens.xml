@@ -7,6 +7,10 @@
     <dimen name="profile_name_size">20sp</dimen>
     <dimen name="profile_elems_text_size">25sp</dimen>
 
+    <!--Explore-->
+    <dimen name="loc_size_in_fragment">22sp</dimen>
+    <dimen name="add_your_lunch_size">30sp</dimen>
+
     <dimen name="popup_text_size">22sp</dimen>
     <dimen name="popup_button_text_size">18sp</dimen>
 </resources>

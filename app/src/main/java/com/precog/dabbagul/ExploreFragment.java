@@ -1,17 +1,23 @@
 package com.precog.dabbagul;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class ExploreFragment extends BaseFragment {
+public class ExploreFragment extends BaseFragment implements View.OnClickListener {
 
-    public TextView box1;
-    public TextView box2;
+    LinearLayout addYourLunch;
+    TextView addYourLunchTitle;
+
+    private static String TAG = "ExploreFragment";
+
+    private static final int ADD_LUNCH_REQUEST = 1;
 
     @Nullable
     @Override
@@ -23,10 +29,36 @@ public class ExploreFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        box1 = view.findViewById(R.id.textView1);
-//        box2 = view.findViewById(R.id.textView2);
         double[] vals = BaseActivity.myLocation.getCoordinates();
-//        box1.setText(vals[0]+"");
-//        box2.setText(vals[1]+"");
+        addYourLunch = view.findViewById(R.id.add_your_lunch_layout);
+        addYourLunchTitle = view.findViewById(R.id.add_your_lunch_title);
+        addYourLunch.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent;
+        switch (view.getId()) {
+            case R.id.add_your_lunch_layout:
+                intent = new Intent(getActivity(), AddLunchActivity.class);
+//                getActivity().startActivity(intent);
+                startActivityForResult(intent, ADD_LUNCH_REQUEST);
+                break;
+            default:
+                logv(TAG, "kya kar rhe ho " + view.getId());
+                break;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == ADD_LUNCH_REQUEST) {
+            if(resultCode == getActivity().RESULT_OK) {
+                logv(TAG, "ab toh result aa gya");
+//                addYourLunch.setVisibility(View.GONE);
+                addYourLunchTitle.setText(R.string.edit_your_lunch);
+            }
+        }
     }
 }

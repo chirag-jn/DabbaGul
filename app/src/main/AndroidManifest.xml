@@ -5,23 +5,29 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission. ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="true"/>
 
     <application
-        android:hardwareAccelerated="true"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CameraActivity"></activity>
         <activity android:name=".GroupChatActivity" />
         <activity android:name=".SingleChatActivity" />
         <activity android:name=".AddLunchActivity" />
+        <activity android:name=".SettingsActivity" />
         <activity
-            android:name=".SettingsActivity" />
-        <activity android:name=".LoginActivity"
-            android:theme="@style/SplashTheme"
-            android:label="@string/title_activity_main">
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,8 +36,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main">
-        </activity>
+            android:label="@string/title_activity_main"></activity>
     </application>
 
 </manifest>
