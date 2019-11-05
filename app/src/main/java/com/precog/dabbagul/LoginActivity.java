@@ -22,6 +22,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import javax.annotation.Nullable;
 
@@ -75,12 +76,6 @@ public class LoginActivity extends BaseActivity {
 
     private void initializeUserProfile() {
 
-        // TODO: Connect login to Firebase instead
-//        myProfileObj.name = currentUser.getDisplayName();
-//        myProfileObj.email = currentUser.getEmail();
-//        myProfileObj.dp = currentUser.getPhotoUrl().toString();
-//        myProfileObj.id = currentUser.getUid();
-
         DocumentReference myProfileDB = profilesDB.document(userEmail);
         myProfileDB.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
@@ -101,7 +96,6 @@ public class LoginActivity extends BaseActivity {
             userEmail = currentUser.getEmail();
         }
         initializeUserProfile();
-        logv(TAG, "switching");
         Intent intent = new Intent(this, switchClass);
         startActivity(intent);
     }
