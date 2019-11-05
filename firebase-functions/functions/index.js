@@ -14,7 +14,7 @@ exports.addUserToDB = functions.auth.user().onCreate((user) => {
   console.log("Checkpoint id: " + id);
   const dp = (user.photoURL!==null ? user.photoURL : '');
   console.log("Checkpoint dp: " + dp);
-  return profileDB.doc(id).set({
+  return profileDB.doc(email).set({
     email: email,
     id: id,
     name: displayName,

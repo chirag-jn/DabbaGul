@@ -76,28 +76,30 @@ public class LoginActivity extends BaseActivity {
     private void initializeUserProfile() {
 
         // TODO: Connect login to Firebase instead
-        myProfileObj.name = currentUser.getDisplayName();
-        myProfileObj.email = currentUser.getEmail();
-        myProfileObj.dp = currentUser.getPhotoUrl().toString();
-        myProfileObj.id = currentUser.getUid();
+//        myProfileObj.name = currentUser.getDisplayName();
+//        myProfileObj.email = currentUser.getEmail();
+//        myProfileObj.dp = currentUser.getPhotoUrl().toString();
+//        myProfileObj.id = currentUser.getUid();
 
-//        DocumentReference myProfileDB = profilesDB.document(userUID);
-//        myProfileDB.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-//            @Override
-//            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-//                if(e!=null) {
-//                    loge(TAG, "Error in initializeUserProfile");
-//                }
-//                myProfileObj = documentSnapshot.toObject(UserProfile.class);
-//            }
-//        });
+        DocumentReference myProfileDB = profilesDB.document(userEmail);
+        myProfileDB.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if(e!=null) {
+                    loge(TAG, "Error in initializeUserProfile");
+                }
+                myProfileObj = documentSnapshot.toObject(UserProfile.class);
+            }
+        });
     }
 
     private void switchAct() {
         finish();
         currentUser = mAuth.getCurrentUser();
-        if(currentUser!=null)
+        if(currentUser!=null) {
             userUID = currentUser.getUid();
+            userEmail = currentUser.getEmail();
+        }
         initializeUserProfile();
         logv(TAG, "switching");
         Intent intent = new Intent(this, switchClass);

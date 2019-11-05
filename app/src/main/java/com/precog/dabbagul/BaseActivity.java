@@ -18,6 +18,7 @@ public class BaseActivity extends AppCompatActivity {
     public static FirebaseUser currentUser;
     public static GoogleSignInClient mGoogleSignInClient;
     public static String userUID = null;
+    public static String userEmail = null;
     public static UserProfile myProfileObj = new UserProfile();
 
     // Firebase Database
