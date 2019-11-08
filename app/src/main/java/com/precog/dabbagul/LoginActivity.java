@@ -92,7 +92,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void switchAct() {
-        finish();
+//        finish();
         logv(TAG, "flag 3");
         currentUser = mAuth.getCurrentUser();
         if(currentUser!=null) {
