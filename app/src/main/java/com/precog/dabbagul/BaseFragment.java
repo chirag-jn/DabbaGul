@@ -5,9 +5,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class BaseFragment extends Fragment {
 
     private static String TAG = "BaseFragment";
+
+    public static final FirebaseFirestore db = BaseActivity.db;
 
     public static UserProfile myProfileObj = BaseActivity.myProfileObj;
 

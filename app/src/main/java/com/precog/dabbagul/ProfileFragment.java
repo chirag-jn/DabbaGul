@@ -49,6 +49,8 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
 
         profileName.setText(myProfileObj.name);
 
+        logv(TAG, "Profile: " + myProfileObj.name);
+
 //        Fresco.initialize(getActivity());
 
         Picasso.get().load(myProfileObj.dp).into(profileImage);

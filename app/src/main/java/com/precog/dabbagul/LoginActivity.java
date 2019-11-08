@@ -75,7 +75,7 @@ public class LoginActivity extends BaseActivity {
 
     private void initializeUserProfile() {
 
-        DocumentReference myProfileDB = profilesDB.document(userEmail);
+        final DocumentReference myProfileDB = profilesDB.document(userEmail);
         myProfileDB.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -83,12 +83,13 @@ public class LoginActivity extends BaseActivity {
                     loge(TAG, "Error in initializeUserProfile");
                 }
                 myProfileObj = documentSnapshot.toObject(UserProfile.class);
+                logv(TAG, myProfileObj.name);
             }
         });
     }
 
     private void switchAct() {
-        finish();
+//        finish();
         currentUser = mAuth.getCurrentUser();
         if(currentUser!=null) {
             userUID = currentUser.getUid();

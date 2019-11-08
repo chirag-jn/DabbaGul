@@ -58,6 +58,8 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         // Get ID
         navView = findViewById(R.id.nav_view);
         mainActivityFrame = findViewById(R.id.main_activity_frame);

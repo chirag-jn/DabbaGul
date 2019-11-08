@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
+
     xmlns:tools="http://schemas.android.com/tools">
 
 
@@ -22,12 +23,14 @@
             />
 
         <ListView
+            android:id="@+id/request_list"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/item_request_item"
             android:dividerHeight="10dp"
+            android:divider="#FFFFFF"
             />
 
 

@@ -22,7 +22,7 @@ public class BaseActivity extends AppCompatActivity {
     public static UserProfile myProfileObj = new UserProfile();
 
     // Firebase Database
-    private static final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public static final FirebaseFirestore db = FirebaseFirestore.getInstance();
     public static final CollectionReference profilesDB = db.collection("profiles");
 
     // Location
