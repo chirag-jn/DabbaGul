@@ -1,14 +1,18 @@
 package com.precog.dabbagul;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 public class EditInfoActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     private ImageButton confirm;
@@ -17,6 +21,7 @@ public class EditInfoActivity extends BaseActivity implements View.OnClickListen
     private EditText age;
     private Spinner gender_spinner;
     private EditText institution;
+    private ImageView dp;
     private static String TAG = "EditInfoActivity";
     private String gender = myProfileObj.gender;
 
@@ -33,11 +38,14 @@ public class EditInfoActivity extends BaseActivity implements View.OnClickListen
         age = findViewById(R.id.edit_age);
         gender_spinner = findViewById(R.id.edit_spinner);
         institution = findViewById(R.id.edit_institution);
+        dp = findViewById(R.id.profile_image);
         logv(TAG, "flag");
 
         name.setText(myProfileObj.name);
-        age.setText(String.valueOf(myProfileObj.age));
+        age.setText(String.valueOf((int)myProfileObj.age));
         institution.setText(myProfileObj.institution);
+
+        Picasso.get().load(myProfileObj.dp).into(dp);
 
         if(myProfileObj.gender.equals("Male") || myProfileObj.gender.equals("Female") || myProfileObj.gender.equals("Other"))
             gender_spinner.setSelection(((ArrayAdapter)gender_spinner.getAdapter()).getPosition(myProfileObj.gender));
