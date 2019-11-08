@@ -24,6 +24,7 @@
         <activity android:name=".SingleChatActivity" />
         <activity android:name=".AddLunchActivity" />
         <activity android:name=".SettingsActivity" />
+        <activity android:name=".EditInfoActivity" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_main"

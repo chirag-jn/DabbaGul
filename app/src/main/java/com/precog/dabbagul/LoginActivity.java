@@ -40,8 +40,10 @@ public class LoginActivity extends BaseActivity {
         myLocation.initialize(this);
         mAuth = FirebaseAuth.getInstance();
 
+        logv(TAG, "flag 1");
+
         //TODO: Remove this
-        mAuth.signOut();
+//        mAuth.signOut();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -52,6 +54,8 @@ public class LoginActivity extends BaseActivity {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         currentUser = mAuth.getCurrentUser();
+
+        logv(TAG, "flag 2");
         updateUI();
 
         if(isNotLoggedIn) {
@@ -89,6 +93,7 @@ public class LoginActivity extends BaseActivity {
 
     private void switchAct() {
         finish();
+        logv(TAG, "flag 3");
         currentUser = mAuth.getCurrentUser();
         if(currentUser!=null) {
             userUID = currentUser.getUid();

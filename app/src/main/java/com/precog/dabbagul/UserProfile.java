@@ -1,5 +1,6 @@
 package com.precog.dabbagul;
 
+import java.util.List;
 import java.util.Map;
 
 public class UserProfile {
@@ -11,6 +12,6 @@ public class UserProfile {
     public double age;
     public String institution;
     public Map<String, Double> location;
-    public Map<String, String>[] history;
+    public List<Map<String, String>> history;
     public Map<String, String> currentItem;
 }

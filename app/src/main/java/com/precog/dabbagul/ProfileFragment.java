@@ -65,6 +65,8 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
             case R.id.profile_history_button:
                 break;
             case R.id.profile_edit_button:
+                intent = new Intent(getActivity(), EditInfoActivity.class);
+                startActivity(intent);
                 break;
             case R.id.profile_settings_button:
                 intent = new Intent(getActivity(), SettingsActivity.class);
