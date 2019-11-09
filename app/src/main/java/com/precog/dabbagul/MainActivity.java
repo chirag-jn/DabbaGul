@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;

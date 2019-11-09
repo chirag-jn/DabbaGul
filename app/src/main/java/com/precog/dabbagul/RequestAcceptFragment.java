@@ -12,6 +12,6 @@ public class RequestAcceptFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.popup_okay_feedback, container, false);
+        return inflater.inflate(R.layout.popup_request_accept, container, false);
     }
 }

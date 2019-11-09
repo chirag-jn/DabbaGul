@@ -38,11 +38,14 @@ public class RequestsFragment extends BaseFragment {
         ListView lv = (ListView) view.findViewById(R.id.request_list);
 
         requests = new ArrayList<>();
+        requestAdapter = new RequestAdapter(this, getActivity(), requests);
+
         Log.e("CHECK", "" + myProfileObj.email);
-        BaseFragment.db.collection("requests").whereEqualTo("receiver_email", myProfileObj.email)
+        BaseFragment.db.collection("requests").whereEqualTo("receiver_email", "dhruvvermaa@gmail.com")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
-                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots,
+                                        @Nullable FirebaseFirestoreException e) {
                         loge("CHECK", "yo");
                         if (e != null) {
                             loge("Firebase Error", "Listen Failed");
@@ -50,6 +53,7 @@ public class RequestsFragment extends BaseFragment {
                         }
                         for(DocumentChange dc: queryDocumentSnapshots.getDocumentChanges()) {
                             Request newElem = dc.getDocument().toObject(Request.class);
+//                            requestAdapter.clear();
                             switch (dc.getType()) {
                                 case ADDED:
                                     requests.add(newElem);
@@ -83,7 +87,6 @@ public class RequestsFragment extends BaseFragment {
 //                    }
                 });
 
-        requestAdapter = new RequestAdapter(getActivity(), requests);
         Log.e("CHECK", "REQ: " + requestAdapter);
         lv.setAdapter(requestAdapter);
     }
