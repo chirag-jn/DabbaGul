@@ -26,6 +26,9 @@ public class BaseActivity extends AppCompatActivity {
     // Firebase Database
     public static final FirebaseFirestore db = FirebaseFirestore.getInstance();
     public static final CollectionReference profilesDB = db.collection("profiles");
+    public static final CollectionReference chatsDB = db.collection("chats");
+    public static final CollectionReference foodDB = db.collection("food");
+    public static final CollectionReference requestsDB = db.collection("requests");
 
     // Location
     public static LocationGetter myLocation = null;

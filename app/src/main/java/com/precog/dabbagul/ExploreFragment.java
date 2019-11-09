@@ -64,7 +64,7 @@ public class ExploreFragment extends BaseFragment implements View.OnClickListene
                 String dishName = data.getStringExtra("name");
                 String description = data.getStringExtra("description");
                 String lunchImagePath = data.getStringExtra("image");
-                HashMap<String, String> map = new HashMap<>();
+                HashMap<String, String> map = (HashMap<String, String>) myProfileObj.currentItem;
                 map.put("name", dishName);
                 map.put("description", description);
                 map.put("image", lunchImagePath);
@@ -73,7 +73,8 @@ public class ExploreFragment extends BaseFragment implements View.OnClickListene
                 map.put("longitude", coordinates[1]+"");
                 long time = System.currentTimeMillis();
                 map.put("time", time+"");
-                db.collection("chirag").add(map);
+                profilesDB.document(myProfileObj.email).set(myProfileObj);
+//                db.collection(myProfileObj.email).add(map);
                 addYourLunchTitle.setText(R.string.edit_your_lunch);
             }
         }
