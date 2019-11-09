@@ -26,9 +26,6 @@
 
     <!--Camera-->
     <string name="take_picture">Take Picture</string>
-
-    <string name="google_sign_in">Sign In with Google</string>
-
     <array name="gender">
         <item>Male</item>
         <item>Female</item>
