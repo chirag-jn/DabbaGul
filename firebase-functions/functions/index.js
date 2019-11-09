@@ -18,7 +18,8 @@ exports.addUserToDB = functions.auth.user().onCreate((user) => {
     email: email,
     id: id,
     name: displayName,
-    dp: dp
+    dp: dp,
+    age: 0
   }).then(() => {
       console.log("Profile added: " + id);
       return null;

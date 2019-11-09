@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.HashMap;
+
 public class ExploreFragment extends BaseFragment implements View.OnClickListener {
 
     LinearLayout addYourLunch;
@@ -57,6 +59,14 @@ public class ExploreFragment extends BaseFragment implements View.OnClickListene
             if(resultCode == getActivity().RESULT_OK) {
                 logv(TAG, "ab toh result aa gya");
 //                addYourLunch.setVisibility(View.GONE);
+                String dishName = data.getStringExtra("name");
+                String description = data.getStringExtra("description");
+                String lunchImagePath = data.getStringExtra("image");
+                HashMap<String, String> map = new HashMap<>();
+                map.put("name", dishName);
+                map.put("description", description);
+                map.put("image", lunchImagePath);
+                db.collection("chirag").add(map);
                 addYourLunchTitle.setText(R.string.edit_your_lunch);
             }
         }

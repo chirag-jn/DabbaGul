@@ -1,5 +1,7 @@
 package com.precog.dabbagul;
 
+import android.app.ProgressDialog;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -22,11 +24,13 @@ public class BaseActivity extends AppCompatActivity {
     public static UserProfile myProfileObj = new UserProfile();
 
     // Firebase Database
-    private static final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public static final FirebaseFirestore db = FirebaseFirestore.getInstance();
     public static final CollectionReference profilesDB = db.collection("profiles");
 
     // Location
     public static LocationGetter myLocation = null;
+
+    private ProgressDialog mProgressDialog;
 
     private static String TAG = "BaseActivityTag";
 
@@ -46,5 +50,23 @@ public class BaseActivity extends AppCompatActivity {
     public static void logv(String TAG, String msg) {
         Log.v(TAG, msg);
     }
+
+    protected void showLoading(String message) {
+        if(message==null) {
+            message = "Loading...";
+        }
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setMessage(message);
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.show();
+    }
+
+    protected void hideLoading() {
+        if (mProgressDialog != null) {
+            mProgressDialog.dismiss();
+        }
+    }
+
 
 }
