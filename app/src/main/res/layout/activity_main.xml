@@ -19,9 +19,11 @@
         <!--app:layout_constraintTop_toTopOf="parent" />-->
 
     <FrameLayout
+        android:id="@+id/main_activity_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/main_activity_frame"></FrameLayout>
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/nav_view"
+        app:layout_constraintTop_toTopOf="parent"></FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/nav_view"
