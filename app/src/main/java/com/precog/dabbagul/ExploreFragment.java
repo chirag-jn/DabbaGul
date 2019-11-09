@@ -21,6 +21,8 @@ public class ExploreFragment extends BaseFragment implements View.OnClickListene
 
     private static final int ADD_LUNCH_REQUEST = 1;
 
+    double[] coordinates;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ public class ExploreFragment extends BaseFragment implements View.OnClickListene
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        double[] vals = BaseActivity.myLocation.getCoordinates();
+        coordinates = myLocation.getCoordinates();
         addYourLunch = view.findViewById(R.id.add_your_lunch_layout);
         addYourLunchTitle = view.findViewById(R.id.add_your_lunch_title);
         addYourLunch.setOnClickListener(this);
@@ -66,6 +68,11 @@ public class ExploreFragment extends BaseFragment implements View.OnClickListene
                 map.put("name", dishName);
                 map.put("description", description);
                 map.put("image", lunchImagePath);
+                coordinates = myLocation.getCoordinates();
+                map.put("latitude", coordinates[0]+"");
+                map.put("longitude", coordinates[1]+"");
+                long time = System.currentTimeMillis();
+                map.put("time", time+"");
                 db.collection("chirag").add(map);
                 addYourLunchTitle.setText(R.string.edit_your_lunch);
             }

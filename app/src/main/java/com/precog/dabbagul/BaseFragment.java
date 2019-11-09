@@ -16,6 +16,8 @@ public class BaseFragment extends Fragment {
 
     public static final FirebaseFirestore db = BaseActivity.db;
 
+    public static LocationGetter myLocation = BaseActivity.myLocation;
+
     public static void loge(String TAG, String msg) {
         Log.e(TAG, msg);
     }

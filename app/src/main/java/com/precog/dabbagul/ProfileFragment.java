@@ -49,6 +49,8 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
 
         profileName.setText(myProfileObj.name);
 
+        logv(TAG, "Profile: " + myProfileObj.name);
+
 //        Fresco.initialize(getActivity());
 
         Picasso.get().load(myProfileObj.dp).into(profileImage);
@@ -65,6 +67,8 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
             case R.id.profile_history_button:
                 break;
             case R.id.profile_edit_button:
+                intent = new Intent(getActivity(), EditInfoActivity.class);
+                startActivity(intent);
                 break;
             case R.id.profile_settings_button:
                 intent = new Intent(getActivity(), SettingsActivity.class);
