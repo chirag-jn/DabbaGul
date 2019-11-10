@@ -20,40 +20,41 @@
             android:background="@drawable/search_frame"
             />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp">
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:layout_marginBottom="10dp">-->
 
-            <TextView
-                android:id="@+id/people"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="People"
-                android:textSize="22dp"
-                android:layout_marginRight="10dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
+<!--            <TextView-->
+<!--                android:id="@+id/people"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="People"-->
+<!--                android:textSize="22dp"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/black"/>-->
 
-            <TextView
-                android:id="@+id/parties"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Parties"
-                android:textSize="22dp"
-                />
+<!--            <TextView-->
+<!--                android:id="@+id/parties"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Parties"-->
+<!--                android:textSize="22dp"-->
+<!--                />-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
 
-        <ListView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/chat_list"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             tools:listitem="@layout/item_chat_item"
             android:dividerHeight="10dp"
             />
