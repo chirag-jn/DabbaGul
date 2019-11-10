@@ -25,7 +25,7 @@
         tools:replace="android:theme">
         <activity android:name=".CameraCaptureActivity"></activity>
         <activity android:name=".GroupChatActivity" />
-        <activity android:name=".SingleChatActivity" />
+        <activity android:name=".ChatActivity" />
         <activity android:name=".AddLunchActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name="com.desmond.squarecamera.CameraActivity"/>
