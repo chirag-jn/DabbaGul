@@ -1,3 +1,5 @@
+//http://imakeanapp.com/make-a-simple-chat-application-using-cloud-firestore-part-6-entering-the-chat-room/
+
 package com.precog.dabbagul;
 
 import android.content.Context;
