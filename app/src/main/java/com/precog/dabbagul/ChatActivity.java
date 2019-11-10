@@ -190,21 +190,22 @@ public class ChatActivity extends BaseActivity
 //            RootRef.document().set(messagesList);
 
 
-            DocumentReference userMessageKeyRef = RootRef.get(messageSenderID).get(messageReceiverID).push();
+            // Amogh
+//            DocumentReference userMessageKeyRef = RootRef.get(messageSenderID.toString()).get(messageReceiverID).push();
+//
+//            String messagePushID = userMessageKeyRef.getKey();
 
-            String messagePushID = userMessageKeyRef.getKey();
-
-            Map messageTextBody = new HashMap();
-            messageTextBody.put("message", messageText);
-            messageTextBody.put("type", "text");
-            messageTextBody.put("from", messageSenderID);
-            messageTextBody.put("to", messageReceiverID);
-            messageTextBody.put("messageID", messagePushID);
-            messageTextBody.put("time", saveCurrentTime);
-            messageTextBody.put("date", saveCurrentDate);
+//            Map messageTextBody = new HashMap();
+//            messageTextBody.put("message", messageText);
+//            messageTextBody.put("type", "text");
+//            messageTextBody.put("from", messageSenderID);
+//            messageTextBody.put("to", messageReceiverID);
+//            messageTextBody.put("messageID", messagePushID);
+//            messageTextBody.put("time", saveCurrentTime);
+//            messageTextBody.put("date", saveCurrentDate);
 
 
-            RootRef.doc
+//            RootRef.doc
 
 
 //            RootRef.updateChildren(messageBodyDetails).addOnCompleteListener(new OnCompleteListener() {
