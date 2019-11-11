@@ -41,7 +41,9 @@ public class RequestsFragment extends BaseFragment {
         requestAdapter = new RequestAdapter(this, getActivity(), requests);
 
         Log.e("CHECK", "" + myProfileObj.email);
-        BaseFragment.db.collection("requests").whereEqualTo("receiver_email", "dhruvvermaa@gmail.com")
+        BaseFragment.db.collection("requests")
+                .whereEqualTo("receiver_email", "dhruvvermaa@gmail.com")
+                .whereEqualTo("status", 0)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots,
@@ -51,7 +53,7 @@ public class RequestsFragment extends BaseFragment {
                             loge("Firebase Error", "Listen Failed");
                             return;
                         }
-                        for(DocumentChange dc: queryDocumentSnapshots.getDocumentChanges()) {
+                        for (DocumentChange dc : queryDocumentSnapshots.getDocumentChanges()) {
                             Request newElem = dc.getDocument().toObject(Request.class);
 //                            requestAdapter.clear();
                             switch (dc.getType()) {
