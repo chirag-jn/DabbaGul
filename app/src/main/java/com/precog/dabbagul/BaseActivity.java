@@ -15,6 +15,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class BaseActivity extends AppCompatActivity {
 
+    public static String[] tags = new String[]{"veg", "non-veg", "spicy", "salty", "baked", "fried", "sweet", "healthy", "north-indian", "south-indian", "street-style", "chinese", "thai", "italian"};
+
     // Firebase Auth
     public static FirebaseAuth mAuth;
     public static FirebaseUser currentUser;

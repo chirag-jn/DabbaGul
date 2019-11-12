@@ -1,6 +1,7 @@
 package com.precog.dabbagul;
 
 import android.Manifest;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,17 +17,24 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.util.TypedValue;
 import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.desmond.squarecamera.CameraActivity;
 import com.desmond.squarecamera.ImageUtility;
+import com.nex3z.flowlayout.FlowLayout;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddLunchActivity extends BaseActivity implements View.OnClickListener {
 
@@ -37,8 +45,11 @@ public class AddLunchActivity extends BaseActivity implements View.OnClickListen
     ImageView lunchImage;
     EditText dishName;
     EditText description;
+    FlowLayout tagsLayout;
 
     String lunchImagePath;
+
+    private ArrayList<String> selectedTags;
 
     public static final int CAMERA_REQUEST = 1;
 
@@ -56,10 +67,83 @@ public class AddLunchActivity extends BaseActivity implements View.OnClickListen
         lunchImage = findViewById(R.id.lunch_image);
         dishName = findViewById(R.id.lunch_name);
         description = findViewById(R.id.lunch_description);
+        tagsLayout = findViewById(R.id.tags);
+
+        selectedTags = new ArrayList<>();
 
         addLunchConfirm.setOnClickListener(this);
         addLunchClose.setOnClickListener(this);
         addLunchImage.setOnClickListener(this);
+
+        addTags();
+    }
+
+    private void addTags() {
+        Map<String, Boolean> isSelected = new HashMap<>();
+
+//        int dp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, this.getResources().getDisplayMetrics());
+
+        for(int i=0; i<tags.length; i++) {
+            isSelected.put(tags[i], false);
+        }
+
+        final int tagsCount = tagsLayout.getChildCount();
+        for (int i=0; i<tagsCount; i++) {
+            Button button = (Button) tagsLayout.getChildAt(i);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String text = (String) button.getText();
+                    if(isSelected.get(text)) {
+                        isSelected.remove(text);
+                        isSelected.put(text, false);
+                        selectedTags.remove(text);
+                        button.setTextColor(getColor(R.color.tag_not_selected));
+                        button.setBackground(getDrawable(R.drawable.tags_border));
+                    } else {
+                        isSelected.remove(text);
+                        isSelected.put(text, true);
+                        selectedTags.add(text);
+                        button.setTextColor(getColor(R.color.tag_selected));
+                        button.setBackground(getDrawable(R.drawable.tag_selected));
+                    }
+
+                }
+            });
+        }
+
+//        for(int i=0; i<tags.length; i++) {
+//            Button button = new Button(this);
+//            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 30*dp);
+//            params.setMargins(10, 5, 0, 0);
+//            button.setLayoutParams(params);
+//            button.setBackground(getDrawable(R.drawable.tags_border));
+//            button.setText(tags[i]);
+//            button.setTextColor(getColor(R.color.tag_not_selected));
+//            button.setTextSize(15);
+//            button.setAllCaps(false);
+//            button.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    String text = (String) button.getText();
+//                    if(isSelected.get(text)) {
+//                        isSelected.remove(text);
+//                        isSelected.put(text, false);
+//                        selectedTags.remove(text);
+//                        button.setTextColor(getColor(R.color.tag_not_selected));
+//                        button.setBackground(getDrawable(R.drawable.tags_border));
+//                    } else {
+//                        isSelected.remove(text);
+//                        isSelected.put(text, true);
+//                        selectedTags.add(text);
+//                        button.setTextColor(getColor(R.color.tag_selected));
+//                        button.setBackground(getDrawable(R.drawable.tag_selected));
+//                    }
+//
+//                }
+//            });
+//            tagsLayout.addView(button);
+//        }
     }
 
     private void returnIntent() {
@@ -67,9 +151,12 @@ public class AddLunchActivity extends BaseActivity implements View.OnClickListen
         logv(TAG, "result is ok my friend");
         // TODO: Add Result here
 //        returnInd.putStringArrayListExtra()
-        returnInd.putExtra("name", dishName.getText().toString());
-        returnInd.putExtra("description", description.getText().toString());
-        returnInd.putExtra("image", lunchImagePath);
+        Food newFood = new Food(dishName.getText().toString(), description.getText().toString(), System.currentTimeMillis(), null, null);
+//        returnInd.putExtra("name", dishName.getText().toString());
+//        returnInd.putExtra("description", description.getText().toString());
+//        returnInd.putExtra("image", lunchImagePath);
+//        returnInd.putExtra("food", newFood);
+        returnInd.putExtra("name", newFood);
         setResult(Activity.RESULT_OK, returnInd);
         finish();
     }

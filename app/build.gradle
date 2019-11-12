@@ -45,5 +45,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.0.1'
     // Camera
     implementation 'com.github.boxme:squarecamera:1.1.0'
+    // Tags Layout
+    implementation 'com.nex3z:flow-layout:1.2.2'
 }
 apply plugin: 'com.google.gms.google-services'
