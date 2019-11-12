@@ -1,6 +1,7 @@
 package com.precog.dabbagul;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Food implements Serializable {
@@ -12,6 +13,12 @@ public class Food implements Serializable {
     public String ownerDp;
     public String foodPhoto;
     public List<String> tags;
+    public double latitude;
+    public double longitude;
+
+    public Food() {
+        tags = new ArrayList<>();
+    }
 
     public Food(String name, String description, long time, String foodPhoto, List<String> tags) {
         this.name = name;

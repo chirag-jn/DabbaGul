@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ExploreFragment extends BaseFragment implements View.OnClickListener {
@@ -37,6 +38,10 @@ public class ExploreFragment extends BaseFragment implements View.OnClickListene
         addYourLunch = view.findViewById(R.id.add_your_lunch_layout);
         addYourLunchTitle = view.findViewById(R.id.add_your_lunch_title);
         addYourLunch.setOnClickListener(this);
+
+        if(myProfileObj.currentItem!=null) {
+            addYourLunchTitle.setText(R.string.edit_your_lunch);
+        }
     }
 
     @Override
@@ -64,16 +69,35 @@ public class ExploreFragment extends BaseFragment implements View.OnClickListene
                 String dishName = data.getStringExtra("name");
                 String description = data.getStringExtra("description");
                 String lunchImagePath = data.getStringExtra("image");
-                HashMap<String, String> map = (HashMap<String, String>) myProfileObj.currentItem;
-                map.put("name", dishName);
-                map.put("description", description);
-                map.put("image", lunchImagePath);
-                coordinates = myLocation.getCoordinates();
-                map.put("latitude", coordinates[0]+"");
-                map.put("longitude", coordinates[1]+"");
+                Food item = (Food) data.getSerializableExtra(AddLunchActivity.ADD_FOOD_CODE);
+//                HashMap<String, String> map = (HashMap<String, String>) myProfileObj.currentItem;
+
+                item.latitude = coordinates[0];
+                item.longitude = coordinates[1];
+
                 long time = System.currentTimeMillis();
-                map.put("time", time+"");
+                item.time = time;
+
+                myProfileObj.currentItem = item;
+
+                if(myProfileObj.history==null) {
+                    myProfileObj.history = new ArrayList<>();
+                }
+
+                myProfileObj.history.add(item);
+
+//                map.put("name", dishName);
+//                map.put("description", description);
+//                map.put("image", lunchImagePath);
+//                coordinates = myLocation.getCoordinates();
+
+
+//                map.put("latitude", coordinates[0]+"");
+//                map.put("longitude", coordinates[1]+"");
+
+//                map.put("time", time+"");
                 profilesDB.document(myProfileObj.email).set(myProfileObj);
+                foodDB.add(item);
 //                db.collection(myProfileObj.email).add(map);
                 addYourLunchTitle.setText(R.string.edit_your_lunch);
             }

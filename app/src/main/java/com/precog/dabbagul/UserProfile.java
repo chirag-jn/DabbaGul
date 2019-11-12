@@ -12,6 +12,7 @@ public class UserProfile {
     public double age;
     public String institution;
     public Map<String, Double> location;
-    public List<Map<String, String>> history;
-    public Map<String, String> currentItem;
+    public List<Food> history;
+//    public Map<String, String> currentItem;
+    public Food currentItem;
 }

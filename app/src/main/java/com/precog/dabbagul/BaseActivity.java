@@ -12,6 +12,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -31,6 +33,7 @@ public class BaseActivity extends AppCompatActivity {
     public static final CollectionReference chatsDB = db.collection("chats");
     public static final CollectionReference foodDB = db.collection("food");
     public static final CollectionReference requestsDB = db.collection("requests");
+    public static final StorageReference imageStorage = FirebaseStorage.getInstance().getReference();
 
     // Location
     public static LocationGetter myLocation = null;

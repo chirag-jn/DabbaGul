@@ -60,9 +60,18 @@ public class CameraCaptureActivity extends BaseActivity {
         finish();
     }
 
+    private void returnIntentWithoutResult() {
+        Intent returnInd = new Intent();
+        logv(TAG, "result is ok my friend");
+        // TODO: Add Result here
+//        returnInd.putExtra("filename", fileName);
+        setResult(Activity.RESULT_CANCELED, returnInd);
+        finish();
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (resultCode != RESULT_OK) return;
+        if (resultCode != RESULT_OK) returnIntentWithoutResult();
 
         if (requestCode == REQUEST_CAMERA) {
             logv(TAG, "flag5");

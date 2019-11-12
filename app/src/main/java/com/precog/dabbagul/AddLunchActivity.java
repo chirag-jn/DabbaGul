@@ -30,8 +30,13 @@ import android.widget.Toast;
 
 import com.desmond.squarecamera.CameraActivity;
 import com.desmond.squarecamera.ImageUtility;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.nex3z.flowlayout.FlowLayout;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,11 +52,15 @@ public class AddLunchActivity extends BaseActivity implements View.OnClickListen
     EditText description;
     FlowLayout tagsLayout;
 
+    public static final String ADD_FOOD_CODE = "AddFood";
+
     String lunchImagePath;
 
     private ArrayList<String> selectedTags;
 
     public static final int CAMERA_REQUEST = 1;
+
+    String foodName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +84,12 @@ public class AddLunchActivity extends BaseActivity implements View.OnClickListen
         addLunchClose.setOnClickListener(this);
         addLunchImage.setOnClickListener(this);
 
+        if(myProfileObj.currentItem!=null) {
+            Picasso.get().load(myProfileObj.currentItem.foodPhoto).into(lunchImage);
+            dishName.setText(myProfileObj.currentItem.name);
+            description.setText(myProfileObj.currentItem.description);
+        }
+
         addTags();
     }
 
@@ -87,9 +102,23 @@ public class AddLunchActivity extends BaseActivity implements View.OnClickListen
             isSelected.put(tags[i], false);
         }
 
+        if(myProfileObj.currentItem!=null) {
+            for (int i=0; i<myProfileObj.currentItem.tags.size(); i++) {
+                isSelected.remove(myProfileObj.currentItem.tags.get(i));
+                isSelected.put(myProfileObj.currentItem.tags.get(i), true);
+                selectedTags.add(myProfileObj.currentItem.tags.get(i));
+            }
+        }
+
         final int tagsCount = tagsLayout.getChildCount();
         for (int i=0; i<tagsCount; i++) {
             Button button = (Button) tagsLayout.getChildAt(i);
+
+            if(isSelected.get(button.getText())) {
+                button.setTextColor(getColor(R.color.tag_selected));
+                button.setBackground(getDrawable(R.drawable.tag_selected));
+            }
+
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -147,18 +176,40 @@ public class AddLunchActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void returnIntent() {
+        showLoading("Adding Data...");
         Intent returnInd = new Intent();
         logv(TAG, "result is ok my friend");
         // TODO: Add Result here
 //        returnInd.putStringArrayListExtra()
-        Food newFood = new Food(dishName.getText().toString(), description.getText().toString(), System.currentTimeMillis(), null, null);
-//        returnInd.putExtra("name", dishName.getText().toString());
-//        returnInd.putExtra("description", description.getText().toString());
-//        returnInd.putExtra("image", lunchImagePath);
-//        returnInd.putExtra("food", newFood);
-        returnInd.putExtra("name", newFood);
-        setResult(Activity.RESULT_OK, returnInd);
-        finish();
+
+        Uri stream = Uri.fromFile(new File(lunchImagePath));
+
+        final StorageReference imgStorage = imageStorage.child("food/" + foodName);
+        imgStorage.putFile(stream).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                imgStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        String downloadUri = uri.toString();
+
+                        // TODO: Add Time here in Milliseconds in place of System.currentTimeMillis
+
+                        Food newFood = new Food(dishName.getText().toString(), description.getText().toString(), System.currentTimeMillis(), downloadUri, selectedTags);
+                //        returnInd.putExtra("name", dishName.getText().toString());
+                //        returnInd.putExtra("description", description.getText().toString());
+                //        returnInd.putExtra("image", lunchImagePath);
+                //        returnInd.putExtra("food", newFood);
+                        returnInd.putExtra(ADD_FOOD_CODE, newFood);
+                        setResult(Activity.RESULT_OK, returnInd);
+                        hideLoading();
+                        finish();
+                    }
+                });
+            }
+        });
+
+
     }
 
     private void returnIntentWithoutData() {
@@ -171,7 +222,7 @@ public class AddLunchActivity extends BaseActivity implements View.OnClickListen
     }
 
     private boolean checkVals() {
-        if(dishName.getText().length()!=0 && description.getText().length()!=0 && lunchImagePath.length()!=0) {
+        if(dishName.getText().length()!=0 && description.getText().length()!=0 && lunchImagePath.length()!=0 && foodName.length()!=0) {
             return true;
         }
         return false;
@@ -195,6 +246,7 @@ public class AddLunchActivity extends BaseActivity implements View.OnClickListen
                 Bitmap bitmap = BitmapFactory.decodeFile(lunchImagePath);
                 lunchImage.setImageBitmap(bitmap);
                 logv(TAG, fileName);
+                foodName = fileName;
             }
         }
 
