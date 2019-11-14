@@ -18,5 +18,5 @@
     <color name="tag_not_selected">#1f1f1f</color>
     <color name="tag_selected">#FFFFFF</color>
 
-    <color name="explore_background">#c0c0c0</color>
+    <color name="explore_background">#FFFFFF</color>
 </resources>

@@ -15,6 +15,7 @@ public class Food implements Serializable {
     public List<String> tags;
     public double latitude;
     public double longitude;
+    public boolean isActive = false;
 
     public Food() {
         tags = new ArrayList<>();
@@ -26,6 +27,7 @@ public class Food implements Serializable {
         this.time = time;
         this.foodPhoto = foodPhoto;
         this.tags = tags;
+        isActive = true;
         ownerID = BaseActivity.myProfileObj.email;
         ownerDp = BaseActivity.myProfileObj.dp;
         ownerName = BaseActivity.myProfileObj.name;

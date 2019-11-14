@@ -114,9 +114,9 @@ public class ExploreFragment extends BaseFragment implements View.OnClickListene
             if(resultCode == getActivity().RESULT_OK) {
                 logv(TAG, "ab toh result aa gya");
 //                addYourLunch.setVisibility(View.GONE);
-                String dishName = data.getStringExtra("name");
-                String description = data.getStringExtra("description");
-                String lunchImagePath = data.getStringExtra("image");
+//                String dishName = data.getStringExtra("name");
+//                String description = data.getStringExtra("description");
+//                String lunchImagePath = data.getStringExtra("image");
                 Food item = (Food) data.getSerializableExtra(AddLunchActivity.ADD_FOOD_CODE);
 //                HashMap<String, String> map = (HashMap<String, String>) myProfileObj.currentItem;
 

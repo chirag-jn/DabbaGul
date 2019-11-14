@@ -1,6 +1,7 @@
 package com.precog.dabbagul;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -69,11 +70,14 @@ public class FoodAdapter extends ArrayAdapter<Food> {
             item_layout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view)  {
-                        Bundle args = new Bundle();
-                        args.putSerializable("receiver_id", lunch);
-                        SendRequestFragment f = new SendRequestFragment();
-                        f.setArguments(args);
-                        ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.explore_frame, f).addToBackStack(null).commit();
+//                        Bundle args = new Bundle();
+                        Intent intent = new Intent(mContext, SingleFoodActivity.class);
+                        intent.putExtra("receiver_id", lunch);
+//                        args.putSerializable("receiver_id", lunch);
+                        mContext.startActivity(intent);
+//                        SendRequestFragment f = new SendRequestFragment();
+//                        f.setArguments(args);
+//                        ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.explore_frame, f).addToBackStack(null).commit();
                     }
                 });
                 //Return the completed view to render on screen

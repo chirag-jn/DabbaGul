@@ -23,13 +23,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:theme">
-        <activity android:name=".CameraCaptureActivity"></activity>
+        <activity android:name=".SingleFoodActivity"></activity>
+        <activity android:name=".CameraCaptureActivity" />
         <activity android:name=".GroupChatActivity" />
         <activity android:name=".SingleChatActivity" />
         <activity android:name=".AddLunchActivity" />
         <activity android:name=".SettingsActivity" />
-        <activity android:name="com.desmond.squarecamera.CameraActivity"/>
-        <activity android:name=".EditInfoActivity"/>
+        <activity android:name="com.desmond.squarecamera.CameraActivity" />
+        <activity android:name=".EditInfoActivity" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_main"

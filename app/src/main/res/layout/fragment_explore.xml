@@ -85,6 +85,7 @@
             android:layout_height="wrap_content"
             android:dividerHeight="10dp"
             android:paddingLeft="10dp"
+            android:scrollbars="none"
             android:paddingRight="10dp"
             tools:listitem="@layout/item_explore_item" />
     </LinearLayout>

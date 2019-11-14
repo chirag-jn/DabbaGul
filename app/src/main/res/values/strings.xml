@@ -28,7 +28,7 @@
     <string name="take_picture">Take Picture</string>
 
 
-<!--    Chats-->
+    <!--    Chats-->
     <string name="error_message_failed">Error in Sending Message</string>
 
 </resources>
