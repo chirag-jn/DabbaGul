@@ -46,6 +46,7 @@ dependencies {
     // Camera
     implementation 'com.github.boxme:squarecamera:1.1.0'
     // Tags Layout
-    implementation 'com.nex3z:flow-layout:1.2.2'
+
+    implementation 'com.nex3z:flow-layout:1.2.4'
 }
 apply plugin: 'com.google.gms.google-services'

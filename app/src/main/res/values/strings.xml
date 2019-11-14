@@ -26,11 +26,7 @@
 
     <!--Camera-->
     <string name="take_picture">Take Picture</string>
-    <array name="gender">
-        <item>Male</item>
-        <item>Female</item>
-        <item>Others</item>
-    </array>
+
 
 <!--    Chats-->
     <string name="error_message_failed">Error in Sending Message</string>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -54,7 +55,7 @@ public class LoginActivity extends BaseActivity {
         currentUser = mAuth.getCurrentUser();
         updateUI();
 
-        if(isNotLoggedIn) {
+        if (isNotLoggedIn) {
             setContentView(R.layout.activity_login);
             button = findViewById(R.id.google_sign_in);
             button.setOnClickListener(new View.OnClickListener() {
@@ -79,10 +80,11 @@ public class LoginActivity extends BaseActivity {
         myProfileDB.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                if(e!=null) {
+                if (e != null) {
                     loge(TAG, "Error in initializeUserProfile");
                 }
-                myProfileObj = documentSnapshot.toObject(UserProfile.class);
+                BaseActivity.myProfileObj = documentSnapshot.toObject(UserProfile.class);
+                Log.e("CHECK", "onEvent: " + myProfileObj);
             }
         });
     }
@@ -91,7 +93,7 @@ public class LoginActivity extends BaseActivity {
         hideLoading();
         finish();
         currentUser = mAuth.getCurrentUser();
-        if(currentUser!=null) {
+        if (currentUser != null) {
             userUID = currentUser.getUid();
             userEmail = currentUser.getEmail();
         }
@@ -116,7 +118,7 @@ public class LoginActivity extends BaseActivity {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                if(account!=null)
+                if (account != null)
                     firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
