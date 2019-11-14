@@ -13,7 +13,7 @@
         android:orientation="vertical" >
 
         <ImageButton
-            android:id="@+id/close"
+            android:id="@+id/request_close"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
             android:layout_width="30dp"
@@ -28,7 +28,7 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/lunch_image"
+        android:id="@+id/request_food_image"
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="300dp"
@@ -49,6 +49,7 @@
             >
 
             <TextView
+                android:id="@+id/request_food_name"
                 style="@android:style/TextAppearance.Material.Widget.Toolbar.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,6 +59,7 @@
                 android:textSize="20dp" />
 
             <TextView
+                android:id="@+id/request_distance"
                 style="@android:style/TextAppearance.Material.Widget.Toolbar.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -76,6 +78,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/request_sender_name"
                 style="@style/TextAppearance.AppCompat.Caption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -85,6 +88,7 @@
                 android:textSize="16dp" />
 
             <TextView
+                android:id="@+id/request_time"
                 style="@style/TextAppearance.AppCompat.Caption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -96,16 +100,18 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/request_institution"
             style="@style/TextAppearance.AppCompat.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
-            android:text="Works at Airtel"
+            android:text="Airtel"
             android:textColor="#773131"
             android:textSize="15dp" />
 
         <TextView
+            android:id="@+id/request_food_description"
             style="@style/TextAppearance.AppCompat.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -117,6 +123,7 @@
             android:textSize="15dp" />
 
         <TextView
+            android:id="@+id/request_tags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -135,6 +142,7 @@
         android:layout_height="wrap_content">
 
         <Button
+            android:id="@+id/send_request"
             android:layout_width="160dp"
             android:layout_height="43dp"
             android:layout_centerInParent="true"

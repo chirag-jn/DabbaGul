@@ -4,19 +4,28 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ExploreFragment extends BaseFragment implements View.OnClickListener {
 
     LinearLayout addYourLunch;
     TextView addYourLunchTitle;
+    public static ArrayList<Food> lunches = new ArrayList<Food>();
+    public FoodAdapter foodAdapter;
+
 
     private static String TAG = "ExploreFragment";
 
@@ -42,6 +51,45 @@ public class ExploreFragment extends BaseFragment implements View.OnClickListene
         if(myProfileObj.currentItem!=null) {
             addYourLunchTitle.setText(R.string.edit_your_lunch);
         }
+
+        ListView lv = (ListView) view.findViewById(R.id.explore_list);
+
+        lunches = new ArrayList<>();
+        foodAdapter = new FoodAdapter(this, getActivity(), lunches);
+        BaseFragment.db.collection("food").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots,
+                                        @Nullable FirebaseFirestoreException e) {
+                        loge("CHECK", "yo");
+                        if (e != null) {
+                            loge("Firebase Error", "Listen Failed");
+                            return;
+                        }
+                        for (DocumentChange dc : queryDocumentSnapshots.getDocumentChanges()) {
+                            Food newElem = dc.getDocument().toObject(Food.class);
+//                            requestAdapter.clear();
+                            switch (dc.getType()) {
+                                case ADDED:
+                                    lunches.add(newElem);
+                                    break;
+                                case MODIFIED:
+                                    loge("RequestsFragment", "ye kya ho rha hai");
+                                    break;
+                                case REMOVED:
+                                    loge("RequestsFragment", "Removed one :)");
+                                    lunches.remove(newElem);
+                                    break;
+                                default:
+                                    break;
+                            }
+                            foodAdapter.notifyDataSetChanged();
+                        }
+                    }
+//
+                });
+        Log.e("CHECK", "REQ: " + foodAdapter);
+        lv.setAdapter(foodAdapter);
+
     }
 
     @Override
@@ -96,7 +144,7 @@ public class ExploreFragment extends BaseFragment implements View.OnClickListene
 //                map.put("longitude", coordinates[1]+"");
 
 //                map.put("time", time+"");
-                profilesDB.document(myProfileObj.email).set(myProfileObj);
+                profilesDB.document(BaseActivity.myProfileObj.email).set(myProfileObj);
                 foodDB.add(item);
 //                db.collection(myProfileObj.email).add(map);
                 addYourLunchTitle.setText(R.string.edit_your_lunch);

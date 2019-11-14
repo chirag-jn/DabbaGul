@@ -1,6 +1,5 @@
 package com.precog.dabbagul;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,7 +8,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -47,8 +45,11 @@ public class EditInfoActivity extends BaseActivity implements View.OnClickListen
 
         Picasso.get().load(myProfileObj.dp).into(dp);
 
-        if(myProfileObj.gender.equals("Male") || myProfileObj.gender.equals("Female") || myProfileObj.gender.equals("Other"))
-            gender_spinner.setSelection(((ArrayAdapter)gender_spinner.getAdapter()).getPosition(myProfileObj.gender));
+
+        if(myProfileObj.gender!= null) {
+            if (myProfileObj.gender.equals("Male") || myProfileObj.gender.equals("Female") || myProfileObj.gender.equals("Other"))
+                gender_spinner.setSelection(((ArrayAdapter) gender_spinner.getAdapter()).getPosition(myProfileObj.gender));
+        }
 
         confirm.setOnClickListener(this);
         cancel.setOnClickListener(this);
