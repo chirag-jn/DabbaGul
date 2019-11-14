@@ -1,5 +1,7 @@
 package com.precog.dabbagul;
 
+import android.util.Log;
+
 public class ChatRoom {
 
     private String id1;
@@ -29,6 +31,7 @@ public class ChatRoom {
         this.name2 = name2;
         this.dp1 = dp1;
         this.dp2 = dp2;
+        Log.e("CHECK", "ChatRoom: "+BaseActivity.myProfileObj);
         myID = BaseActivity.myProfileObj.email;
         myName = BaseActivity.myProfileObj.name;
         myDP = BaseActivity.myProfileObj.dp;
