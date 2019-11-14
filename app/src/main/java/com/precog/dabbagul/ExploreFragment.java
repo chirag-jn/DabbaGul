@@ -96,7 +96,7 @@ public class ExploreFragment extends BaseFragment implements View.OnClickListene
 //                map.put("longitude", coordinates[1]+"");
 
 //                map.put("time", time+"");
-                profilesDB.document(myProfileObj.email).set(myProfileObj);
+                profilesDB.document(BaseActivity.myProfileObj.email).set(BaseActivity.myProfileObj);
                 foodDB.add(item);
 //                db.collection(myProfileObj.email).add(map);
                 addYourLunchTitle.setText(R.string.edit_your_lunch);

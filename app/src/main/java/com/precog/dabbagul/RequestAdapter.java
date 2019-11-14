@@ -1,6 +1,7 @@
 package com.precog.dabbagul;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
@@ -51,10 +52,7 @@ public class RequestAdapter extends ArrayAdapter<Request> {
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Fragment newFragment = new RequestAcceptFragment();
-//                FragmentManager fragmentManager = ((MainActivity) mContext).getSupportFragmentManager();
-//                fragmentManager.beginTransaction().replace(R.id.main_activity_frame, newFragment).commit();
-                RequestAcceptDialog dialog = new RequestAcceptDialog(mContext, request.sender_name);
+                RequestAcceptDialog dialog = new RequestAcceptDialog(mContext, request);
                 dialog.show();
             }
         });
@@ -62,11 +60,7 @@ public class RequestAdapter extends ArrayAdapter<Request> {
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                requests.remove(position);
-//                RequestsFragment.requests.remove(position);
-//                Fragment newFragment = new RequestsFragment();
-//                FragmentManager fragmentManager = ((MainActivity) mContext).getSupportFragmentManager();
-//                fragmentManager.beginTransaction().replace(R.id.main_activity_frame, newFragment).commit();
+
             }
         });
 
