@@ -32,7 +32,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/backColor"
-        app:itemIconTint="@color/white"
+        app:itemIconTint="@color/bottom_nav_color_tint"
         app:itemTextColor="#FFFFFF"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
