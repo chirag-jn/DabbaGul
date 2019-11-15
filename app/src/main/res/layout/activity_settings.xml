@@ -36,45 +36,45 @@
         app:layout_constraintStart_toStartOf="@+id/return_from_settings_button"
         app:layout_constraintTop_toBottomOf="@+id/return_from_settings_button" />
 
-    <Button
-        android:id="@+id/settings_account"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="start"
-        android:text="Account"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:background="@color/white"
-        style="?android:attr/borderlessButtonStyle"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textColor="#8c1818"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/settings_heading"
-        app:layout_constraintTop_toBottomOf="@+id/settings_heading" />
+<!--    <Button-->
+<!--        android:id="@+id/settings_account"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="40dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:gravity="start"-->
+<!--        android:text="Account"-->
+<!--        android:textAlignment="viewStart"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:background="@color/white"-->
+<!--        style="?android:attr/borderlessButtonStyle"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Caption"-->
+<!--        android:textColor="#8c1818"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/settings_heading"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/settings_heading" />-->
 
-    <Button
-        android:id="@+id/settings_notifications"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="start"
-        style="?android:attr/borderlessButtonStyle"
-        android:text="Notifications"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textColor="#8c1818"
-        android:textSize="20sp"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/settings_heading"
-        app:layout_constraintTop_toBottomOf="@+id/settings_account" />
+<!--    <Button-->
+<!--        android:id="@+id/settings_notifications"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="40dp"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:gravity="start"-->
+<!--        style="?android:attr/borderlessButtonStyle"-->
+<!--        android:text="Notifications"-->
+<!--        android:textAlignment="viewStart"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Caption"-->
+<!--        android:textColor="#8c1818"-->
+<!--        android:textSize="20sp"-->
+<!--        android:background="@color/white"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/settings_heading"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/settings_account" />-->
 
     <Button
         android:id="@+id/settings_privacy"
@@ -93,7 +93,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/settings_heading"
-        app:layout_constraintTop_toBottomOf="@+id/settings_notifications" />
+        app:layout_constraintTop_toBottomOf="@+id/settings_heading" />
 
     <Button
         android:id="@+id/settings_about"
@@ -113,5 +113,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/settings_heading"
         app:layout_constraintTop_toBottomOf="@+id/settings_privacy" />
+
+    <Button
+        android:id="@+id/settings_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="8dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:background="@color/white"
+        android:gravity="start"
+        android:text="Logout"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textColor="#8c1818"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/settings_heading"
+        app:layout_constraintTop_toBottomOf="@+id/settings_about" />
 
 </android.support.constraint.ConstraintLayout>

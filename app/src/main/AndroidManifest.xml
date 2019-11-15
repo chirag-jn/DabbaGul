@@ -19,11 +19,12 @@
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_new_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:roundIcon="@mipmap/ic_new_launcher"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:theme">
-        <activity android:name=".SingleFoodActivity"></activity>
+        <activity android:name=".webActivity"></activity>
+        <activity android:name=".SingleFoodActivity" />
         <activity android:name=".CameraCaptureActivity" />
         <activity android:name=".GroupChatActivity" />
         <activity android:name=".SingleChatActivity" />
