@@ -9,7 +9,9 @@ public class Request {
     public String sender_email;
     public String receiver_email;
     public String sender_food;
-    public Timestamp date_generated;
+    public String sender_dp;
+    public String food_dp;
+    public long date_generated;
     public double status;
     public double distance; //in meters
 }

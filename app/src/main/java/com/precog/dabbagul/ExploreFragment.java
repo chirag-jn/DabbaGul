@@ -56,7 +56,7 @@ public class ExploreFragment extends BaseFragment implements View.OnClickListene
 
         lunches = new ArrayList<>();
         foodAdapter = new FoodAdapter(this, getActivity(), lunches);
-        BaseFragment.db.collection("food").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        foodDB.addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots,
                                         @Nullable FirebaseFirestoreException e) {
@@ -67,17 +67,20 @@ public class ExploreFragment extends BaseFragment implements View.OnClickListene
                         }
                         for (DocumentChange dc : queryDocumentSnapshots.getDocumentChanges()) {
                             Food newElem = dc.getDocument().toObject(Food.class);
+                            newElem.id = dc.getDocument().getId();
 //                            requestAdapter.clear();
                             switch (dc.getType()) {
                                 case ADDED:
-                                    lunches.add(newElem);
+                                    if(!newElem.ownerID.equals(myProfileObj.email))
+                                        lunches.add(newElem);
                                     break;
                                 case MODIFIED:
                                     loge("RequestsFragment", "ye kya ho rha hai");
                                     break;
                                 case REMOVED:
                                     loge("RequestsFragment", "Removed one :)");
-                                    lunches.remove(newElem);
+                                    if(!newElem.ownerID.equals(myProfileObj.email))
+                                        lunches.remove(newElem);
                                     break;
                                 default:
                                     break;

@@ -1,6 +1,8 @@
 package com.precog.dabbagul;
 
+import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +11,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.squareup.picasso.Picasso;
 
 public class SingleFoodActivity extends BaseActivity implements View.OnClickListener {
@@ -28,6 +34,9 @@ public class SingleFoodActivity extends BaseActivity implements View.OnClickList
     Button send_request;
     UserProfile receiver;
     Food requested_lunch;
+    Context mContext;
+
+    String foodID;
 
 
     @Override
@@ -51,9 +60,12 @@ public class SingleFoodActivity extends BaseActivity implements View.OnClickList
         close = findViewById(R.id.request_close);
         close.setOnClickListener(this);
 
+        mContext = this;
+
         Intent intent = getIntent();
 
         requested_lunch = (Food) intent.getSerializableExtra("receiver_id");
+        foodID = (String) intent.getStringExtra("food_id");
 
         Picasso.get().load(requested_lunch.foodPhoto).into(food_image);
         food_name.setText(requested_lunch.name);
@@ -77,13 +89,41 @@ public class SingleFoodActivity extends BaseActivity implements View.OnClickList
                 break;
 
             case R.id.send_request:
-                Request req = new Request();
-                req.sender_email = myProfileObj.email;
-                req.date_generated = Timestamp.now();
-                req.receiver_email = receiver.email;
-                //req.sender_food = myProfileObj.currentItem.get("name");
-                req.sender_name = myProfileObj.name;
-                req.status = 0;
+
+                send_request.setClickable(false);
+
+                profilesDB.document(requested_lunch.ownerID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.isComplete()) {
+                            DocumentSnapshot doc = task.getResult();
+                            if(doc.exists()) {
+                                receiver = (UserProfile) doc.toObject(UserProfile.class);
+                                Request req = new Request();
+                                req.id = requested_lunch.id;
+                                req.sender_email = myProfileObj.email;
+                                req.date_generated = System.currentTimeMillis();
+                                req.receiver_email = receiver.email;
+                                //req.sender_food = myProfileObj.currentItem.get("name");
+                                req.sender_name = myProfileObj.name;
+                                req.sender_dp = myProfileObj.dp;
+                                req.food_dp = requested_lunch.foodPhoto;
+                                req.sender_food = requested_lunch.name;
+                                req.status = 0;
+                                requestsDB.add(req).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DocumentReference> task) {
+                                        RequestSentDialog dialog = new RequestSentDialog(mContext);
+                                        dialog.show();
+                                        send_request.setClickable(false);
+                                    }
+                                });
+                            }
+                        }
+                    }
+                });
+
+
 
             default:
                 logv(TAG, "kya kar rhe ho " + view.getId());

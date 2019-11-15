@@ -75,7 +75,6 @@ public class SendRequestFragment extends BaseFragment implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        Intent intent;
         switch (view.getId()) {
             case R.id.request_close:
                 break;
@@ -83,7 +82,7 @@ public class SendRequestFragment extends BaseFragment implements View.OnClickLis
             case R.id.send_request:
                 Request req = new Request();
                 req.sender_email = myProfileObj.email;
-                req.date_generated = Timestamp.now();
+                req.date_generated = System.currentTimeMillis();
                 req.receiver_email = receiver.email;
                 //req.sender_food = myProfileObj.currentItem.get("name");
                 req.sender_name = myProfileObj.name;

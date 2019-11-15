@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Food implements Serializable {
+    public String id;
     public String description;
     public long time;
     public String name;
@@ -22,6 +23,7 @@ public class Food implements Serializable {
     }
 
     public Food(String name, String description, long time, String foodPhoto, List<String> tags) {
+        this.id = "not assigned";
         this.name = name;
         this.description = description;
         this.time = time;
