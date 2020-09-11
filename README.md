@@ -5,9 +5,9 @@
   </a>
 </p>
 
-![Website](https://img.shields.io/website?down_color=lightgrey&down_message=offline&up_color=blue&up_message=blog&url=https%3A%2F%2Fcse501-dhcs-2019.blogspot.com%2F2019%2F11%2Fdabbagul-new.html%3Fview%3Dsidebar)
+[![Website](https://img.shields.io/website?down_color=lightgrey&down_message=offline&up_color=blue&up_message=blog&url=https%3A%2F%2Fcse501-dhcs-2019.blogspot.com%2F2019%2F11%2Fdabbagul-new.html%3Fview%3Dsidebar)](https://cse501-dhcs-2019.blogspot.com/2019/11/dabbagul-new.html)
 [![youtube](https://img.shields.io/badge/-youtube-red?logo=youtube&labelColor=grey)](https://www.youtube.com/watch?v=c_aMrn6eJfc)
-![Website](https://img.shields.io/website?down_color=lightgrey&down_message=offline&up_color=blue&up_message=news&url=https%3A%2F%2Fwww.bhaskar.com%2Fdelhi%2Fdelhi-ncr%2Fnews%2Fincrease-taste-with-food-sharing-twitter-clumsy-also-stay-updated-with-dmrc-01688839.html)
+[![Website](https://img.shields.io/website?down_color=lightgrey&down_message=offline&up_color=blue&up_message=news&url=https%3A%2F%2Fwww.bhaskar.com%2Fdelhi%2Fdelhi-ncr%2Fnews%2Fincrease-taste-with-food-sharing-twitter-clumsy-also-stay-updated-with-dmrc-01688839.html)](https://www.bhaskar.com/delhi/delhi-ncr/news/increase-taste-with-food-sharing-twitter-clumsy-also-stay-updated-with-dmrc-01688839.html)
 
 DabbaGul is a food sharing app where you can explore the food around you carried by other people, by uploading yours to the platform. If you're here to trade your home-made food for something equally delicious, expand your social network over food or just explore the lunches around you for the love of food, you've come to the right place.
 
